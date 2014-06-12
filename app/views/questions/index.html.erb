@@ -1,0 +1,8 @@
+<h1>Index of Questions</h1>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li><h4><%= question.title %></h4></li>
+    <li><%= question.description %></li>
+  <% end %>
+</ul>
