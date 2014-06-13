@@ -3,15 +3,13 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     # @answer = Answer.new(answer_params)
     # @answer.question = @question
-
+    # the below is a way of stating the above more quickly
+    # build is just an alias for new
     @answer = @question.answers.build(answer_params)
 
     if @answer.save
       redirect_to "/questions/#{@question.id}"
     else
-      # flash.now[:notice] = "Your answer is too short!"
-      # @errors = @answer.errors
-
       render :'questions/show'
     end
   end

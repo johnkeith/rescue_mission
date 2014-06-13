@@ -1,0 +1,20 @@
+<h1>Edit this question</h1>
+
+<%= form_for @question do |f| %>
+  <div>
+    <% @question.errors.messages.each do |field, issue| %>
+      <% issue.each do |problem| %>
+        <p class="bg-danger"><%= "#{field}: #{problem}" %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.label :title %>
+  <%= f.text_field :title%>
+
+  <%= f.label :description %>
+  <%= f.text_field :description%>
+  
+  <%= f.submit %>
+
+<% end %>

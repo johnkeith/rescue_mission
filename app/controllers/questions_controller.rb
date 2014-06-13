@@ -8,6 +8,19 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
   end
 
+  def edit 
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      redirect_to "/questions/#{@question.id}"
+    else
+      render :'questions/edit'
+    end
+  end
+
   def new 
     @question = Question.new
   end
