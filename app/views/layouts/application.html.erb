@@ -2,11 +2,13 @@
 <html>
 <head>
   <title>Rescue Mission</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<<<<<<< HEAD
   <div class="container">
   <% if flash.any? %>
     <div>
@@ -18,5 +20,18 @@
 
   </div>
 
+=======
+
+  <div class="container">
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+        <%= value %>
+      </div>
+    <% end %>
+    <%= yield %>
+    
+  </div>
+  
+>>>>>>> 11167fd700b4b843dcb3f4acbd2bc14e9d1ddf4f
 </body>
 </html>

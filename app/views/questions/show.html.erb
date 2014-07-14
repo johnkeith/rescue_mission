@@ -1,3 +1,24 @@
 <h1><%= @question.title %></h1>
-
 <p><%= @question.description %></p>
+<%= link_to "Edit this question", edit_question_path(@question) %>
+
+<ul>
+  <% @question.answers.order(created_at: :desc).each do |answer| %>
+    <li><%= answer.description %></li>
+  <% end %>
+</ul>
+
+<%= form_for [@question, @answer] do |f| %>
+  <div>
+    <% @answer.errors.messages.each do |field, issue| %>
+      <% issue.each do |problem| %>
+        <p class="bg-danger"><%= "#{field}: #{problem}" %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "Answer to Question:" %><br>
+    <%= f.text_area :description, cols: "100", rows: "10" %><br>
+  </div>
+  <%= f.submit %>
+<% end %>

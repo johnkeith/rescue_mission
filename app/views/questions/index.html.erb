@@ -1,8 +1,13 @@
 <h1>Index of Questions<h1>
 
-<ul>
+<ul class="list-unstyled">
   <% @questions.each do |question| %>
+<<<<<<< HEAD
     <h4><a href="/questions/<%= question.id %>"><%= question.title %></a></h4>
     <p><a><%= question.description %></a></p>
+=======
+    <li><h4><%= link_to question.title, question_path(question) %></h4></li>
+    <li><%= question.description %></li>
+>>>>>>> 11167fd700b4b843dcb3f4acbd2bc14e9d1ddf4f
   <% end %>
 </ul>

@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   resources :questions,
+=======
+  root to: 'questions#index'
+  
+  resources :questions
+  
+  resources :questions do
+    resources :answers, only: :create
+  end
+
+  get '/auth/github/callback', to: 'sessions#create'
+
+  resources :sessions, only: [:destroy]
+
+>>>>>>> 11167fd700b4b843dcb3f4acbd2bc14e9d1ddf4f
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

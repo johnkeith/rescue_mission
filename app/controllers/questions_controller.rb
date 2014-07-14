@@ -1,10 +1,24 @@
-class QuestionsController < ActionController::Base
+class QuestionsController < ApplicationController
   def index
     @questions = Question.order('created_at DESC')
   end
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new
+  end
+
+  def edit 
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      redirect_to "/questions/#{@question.id}"
+    else
+      render :'questions/edit'
+    end
   end
 
   def new
